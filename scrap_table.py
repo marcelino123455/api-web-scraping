@@ -27,11 +27,11 @@ def lambda_handler(event, context):
         }
 
     # Extraer los encabezados de la tabla
-    headers = [header.text for header in table.find_all('th') if enumerate(header.text)!=0]
+    headers = [header.text for header in table.find_all('th')]
 
     # Extraer las filas de la tabla
     rows = []
-    for row in table.find_all('tr')[1:]:  # Omitir el encabezado
+    for row in table.find_all('tr')[1:len(rows)]:  # Omitir el encabezado
         cells = row.find_all('td')
         if len(cells) > 0:
             rows.append({headers[i]: cell.text for i, cell in enumerate(cells)})
