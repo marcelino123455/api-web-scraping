@@ -31,7 +31,7 @@ def lambda_handler(event, context):
 
     # Extraer las filas de la tabla
     rows = []
-    for row in table.find_all('tr')[1:len(rows)]:  # Omitir el encabezado
+    for row in table.find_all('tr')[8:]:  # Omitir el encabezado
         cells = row.find_all('td')
         if len(cells) > 0:
             rows.append({headers[i]: cell.text for i, cell in enumerate(cells)})
